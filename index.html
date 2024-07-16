@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to left slide img(help to ai)</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #layout {
+        max-width: 45vw;
+        height: 45.5vh;
+        margin: auto;
+        border: 10px solid red;
+        overflow: hidden;
+      }
+      #slide {
+        display: flex;
+        /* width: calc(100% * 3); */
+        width: 300%;
+        /* 3개의 이미지를 위한 너비 */
+        height: 100%;
+        position: relative;
+        left: 0;
+      }
+      #slide div {
+        /* border: 1px solid blue; */
+        height: 300px;
+        /* background-color: aquamarine; */
+        width: 33.33%;
+        /* 각 슬라이드의 너비 */
+        height: 100%;
+        /* font-size: 10rem; */
+      }
+      #slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* 이미지 비율을 유지하면서 div를 채움 */
+      }
+      @media (max-width: 1024px) {
+        #layout {
+          /* align-self: stretch;
+           */
+          max-width: 100vw;
+          /* 작은 화면에서는 전체 너비 사용 */
+
+          height: 50vh;
+          /* 높이 조정 */
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        /* // setTimeout(함수,지체시간);
+        // 지정한 시간 경과후 수행 할 작업
+        // setTimeInterval
+        //지정한 시간 경과후 무한히 반복
+        // setInterval(() => {
+        //   alert("하이");
+        // }, 1000); */
+        const s1 = document.getElementById("slide");
+        /* // alert(s1); */
+
+        // const iw = window.innerWidth;
+        // /* //브라우저 넓이 */
+        // const img = Array.from(document.getElementsByTagName("img"));
+
+        // img.foreach((i) => {
+        //   i.style.width = iw + "px";
+        // });
+        const toLeft = () => {
+          s1.style.transition = "left 1.5s";
+          s1.style.left = "-100%";
+          setTimeout(() => toLeft2(), 1500);
+
+          toLeft2 = () => {
+            s1.style.left = 0;
+            s1.style.transition = "none";
+            s1.appendChild(s1.firstElementChild);
+            /* //자식 선택자 추가, 처음요소의 자식을 가장 마지막에 추가하라. */
+          };
+          //지정요소.스타일,css속성명 = '값';
+        };
+        setInterval(() => {
+          /* //호출할 함수가 단일일때는, 중괄호를 제거할 수 있으나, 이경우에는 세미콜론도 지워야한다. */
+          toLeft();
+        }, 2000);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="layout">
+      <section id="slide_Aria">
+        <h1>슬라이드</h1>
+        <div id="slide">
+          <div>
+            <img src="cat-114782_1280.jpg" alt="cat1" />
+          </div>
+          <div>
+            <img src="cat-6664412_1280.jpg" alt="cat2" />
+          </div>
+          <div>
+            <img src="cat-7203072_1920.jpg" alt="cat3" />
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
